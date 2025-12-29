@@ -146,20 +146,23 @@ export default function Sites({ initialSiteId }) {
 
 function SiteList({ onSelect }) {
   return (
-    <div className="p-6 h-full flex flex-col bg-[#0F1011]">
+    <div className="flex flex-col h-full bg-[#0F1011]">
       {/* Header */}
-      <div className="flex justify-between items-center mb-8">
-        <div>
-          <h2 className="text-xl font-bold text-white mb-1">Site Registry</h2>
-          <p className="text-sm text-gray-400">Registry of all sanctioned solar assets and field progress</p>
-        </div>
-        <div className="px-4 py-1.5 bg-[#151617] text-gray-400 text-sm border border-gray-800 rounded hover:text-white transition-colors">
-          Total: {sitesData.length} Sites
+      <div className="flex-none p-6 pb-4">
+        <div className="flex justify-between items-center">
+          <div>
+            <h2 className="text-xl font-bold text-white mb-1">Site Registry</h2>
+            <p className="text-sm text-gray-400">Registry of all sanctioned solar assets and field progress</p>
+          </div>
+          <div className="px-4 py-1.5 bg-[#151617] text-gray-400 text-sm border border-gray-800 rounded hover:text-white transition-colors">
+            Total: {sitesData.length} Sites
+          </div>
         </div>
       </div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-3 gap-6">
+      {/* Scrollable Grid */}
+      <div className="flex-1 overflow-y-auto p-6 pt-0 pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {sitesData.map((site) => (
           <div 
             key={site.id} 
@@ -199,6 +202,7 @@ function SiteList({ onSelect }) {
             </div>
           </div>
         ))}
+        </div>
       </div>
     </div>
   );
